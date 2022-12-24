@@ -1,48 +1,26 @@
 import path from 'path';
-import {promises as fs} from 'fs';
-import exp from 'constants';
+import { promises as fs } from 'fs';
 
 const privateDir = path.join(process.cwd(), 'private');
 
-
-export async function loadGalleryCache(): Promise<GalleryCache> {
-  return JSON.parse(await fs.readFile(path.join(privateDir, 'gallery.cache.json'), 'utf8'));
+export async function loadImageDetails(): Promise<ImageDetails> {
+  return JSON.parse(await fs.readFile(path.join(privateDir, 'images.json'), 'utf8'));
 }
 
-type GalleryCache = {
-  imageInformationData: { [key: string]: Image }
-  rootCategory: Array<Category>
-  computedTags: Array<Tag | Array<Image>>
+export async function loadCategoryDetails(): Promise<CategoryDetails> {
+  return JSON.parse(await fs.readFile(path.join(privateDir, 'categories.json'), 'utf8'));
 }
 
-type Category = {
-  categoryName: { complexName: string }
-  images: Array<Image>,
-  thumbnailImage: Image
-  subcategories?: Array<Category>
+export async function loadTagDetails(): Promise<TagDetails> {
+  return JSON.parse(await fs.readFile(path.join(privateDir, 'tags.json'), 'utf8'));
 }
 
-type Tag = { name: string };
-type Image = {
-  filename: string
-  title: string,
-  tags: Array<Tag>
-  exifInformation: Partial<Record<ExifKey, string>>,
-  categories: Array<string>
-}
+export type ImageDetails = { [filenameWithoutExtension: string]: ImageDetail };
+export type ImageDetail = { filename: string, categories: Array<string>, tags: Array<string> };
 
-type ExifKey =
-  'CAMERA_MAKE'
-  | 'CAMERA_MODEL'
-  | 'LENS_MODEL'
-  | 'FOCAL_LENGTH'
-  | 'CREATION_DATETIME'
-  | 'APERTURE'
-  | 'SHUTTER_SPEED'
-  | 'ISO'
+export type CategoryDetails = { [filenameWithoutExtension: string]: CategoryDetail };
+export type CategoryDetail = { name: string, images: Array<string>, subcategories: Array<SubcategoryDetail> };
+export type SubcategoryDetail = { url: string, name: string, image: string };
 
-export function urlsafeName(tag: { name:string }) {
-  return tag.name.toLowerCase().replaceAll(' ', '_');
-}
-
-
+export type TagDetails = { [filenameWithoutExtension: string]: TagDetail };
+export type TagDetail = { name: string, images: Array<string> };
