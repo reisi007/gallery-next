@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { loadCategoryDetails, SubcategoryDetail } from '../../components/static/loadJson';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
-import { BasePage } from '../../components/images-next/page/BasePage';
+import { GalleryPage } from '../../components/GalleryPage';
 import { Gallery } from '../../components/images-next/gallery/Gallery';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
 
@@ -13,9 +13,9 @@ export default function CategoryPage({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <BasePage title={name}>
+    <GalleryPage title={name}>
       <Gallery images={images} />
-    </BasePage>
+    </GalleryPage>
   );
 }
 

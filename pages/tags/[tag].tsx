@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { Gallery } from '../../components/images-next/gallery/Gallery';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
-import { BasePage } from '../../components/images-next/page/BasePage';
+import { GalleryPage } from '../../components/GalleryPage';
 import { loadTagDetails } from '../../components/static/loadJson';
 
 export default function TagPage({
@@ -11,9 +11,9 @@ export default function TagPage({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <BasePage title={name}>
+    <GalleryPage title={name}>
       <Gallery images={images} />
-    </BasePage>
+    </GalleryPage>
   );
 }
 
