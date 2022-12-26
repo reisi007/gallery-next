@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import { CONTAIINER_CLASSES } from './images-next/utils/Css';
-import { Footer } from './images-next/page/Footer';
+import { FooterContent } from './images-next/page/FooterContent';
 
 export type GalleryPageProps = { children: ReactNode, title: string, className?: string };
 
@@ -18,7 +18,7 @@ export function GalleryPage({
       <main className={classNames(CONTAIINER_CLASSES, className)}>
         {children}
       </main>
-      <Footer />
+      <FooterContent />
     </>
   );
 }
