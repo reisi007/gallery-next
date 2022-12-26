@@ -5,15 +5,19 @@ import { ImageInfo } from '../../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../../components/GalleryPage';
 import { Gallery } from '../../components/images-next/gallery/Gallery';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
+import { Subcategories } from '../../components/categories/Subcategories';
 
 export default function CategoryPage({
   category: name,
-  /* subcategories,
-                                        subcategoryImages, */
+  subcategories,
+  subcategoryImages,
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <GalleryPage title={name}>
+      <h2 className="my-2">Unterkategorien</h2>
+      <Subcategories className="mb-8" subcategories={subcategories} subcategoryImages={subcategoryImages} />
+      <h2 className="my-2">Bilder</h2>
       <Gallery images={images} />
     </GalleryPage>
   );
