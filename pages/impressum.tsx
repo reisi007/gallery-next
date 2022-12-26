@@ -3,7 +3,6 @@ import { GalleryPage } from '../components/GalleryPage';
 export default function Impressum() {
   return (
     <GalleryPage title="Impressum">
-      <h1 id="impressum">Impressum</h1>
       <p>Florian Reisinger Robert-Stolz-Straße 8, 4020 Linz Österreich</p>
       <p>florian@reisisoft.pictures</p>
       <p>Weitere Kontaktmöglichkeien am Ende dieser Seite (Kontaktformular, Facebook, usw.)</p>
