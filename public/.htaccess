@@ -1,6 +1,4 @@
 RewriteEngine On
-RewriteCond %{REQUEST_URI} ^\/categories\/$
-RewriteRule .* /categories/chronologisch/ [NE,R=302,L]
 
 RewriteRule ^([^/]+)/$ $1.html
 RewriteCond %{REQUEST_FILENAME} !-f

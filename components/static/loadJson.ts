@@ -15,6 +15,10 @@ export async function loadTagDetails(): Promise<TagDetails> {
   return JSON.parse(await fs.readFile(path.join(privateDir, 'tags.json'), 'utf8'));
 }
 
+export async function loadRootCategories(): Promise<Array<SubcategoryDetail>> {
+  return JSON.parse(await fs.readFile(path.join(privateDir, 'rootCategories.json'), 'utf8'));
+}
+
 export type ImageDetails = { [filenameWithoutExtension: string]: ImageDetail };
 export type ImageDetail = { filename: string, categories: Array<string>, tags: Array<string> };
 
