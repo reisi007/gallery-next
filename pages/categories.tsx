@@ -27,7 +27,18 @@ export default function Categories({
           name,
         }) => {
           const imageInfo = images[image];
-          return <ImageWithText key={url} className="h-96 max-h-96" breakpoints={TAGS_IMAGE_BREAKPOINTS} filename={image} text={name} url={`categories/${url}`} {...imageInfo} />;
+          return (
+            <ImageWithText
+              key={url}
+              className="h-96 max-h-96"
+              moreHeightConstraints="24rem"
+              breakpoints={TAGS_IMAGE_BREAKPOINTS}
+              filename={image}
+              text={name}
+              url={`categories/${url}`}
+              {...imageInfo}
+            />
+          );
         })}
       </div>
     </GalleryPage>

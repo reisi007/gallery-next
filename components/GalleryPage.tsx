@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
-import { CONTAIINER_CLASSES } from './images-next/utils/Css';
 import { FooterContent } from './images-next/page/FooterContent';
+import styles from './images-next/utils/Utils.module.css';
 
 export type GalleryPageProps = { children: ReactNode, title: string, className?: string };
 
@@ -30,10 +30,10 @@ export function GalleryPage({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       </Head>
-      <header>
+      <header className="my-4">
         <h1>{title}</h1>
       </header>
-      <main className={classNames(CONTAIINER_CLASSES, className)}>
+      <main className={classNames(styles.container, className)}>
         {children}
       </main>
       <FooterContent />
