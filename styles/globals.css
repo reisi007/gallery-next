@@ -19,7 +19,7 @@
     }
 
     a:not(.black) {
-        @apply text-blue-600 underline;
+        @apply text-primary visited:text-primary-alternative font-logo underline hover:text-primary-accent;
     }
 
     pre {
@@ -52,7 +52,7 @@
         @apply h-full
     }
 
-    input,textarea {
+    input, textarea {
         @apply p-2 border accent-primary-alternative border-gray-200 rounded-lg
     }
 
@@ -78,7 +78,7 @@
         @apply text-black
     }
 
-    button,.button {
+    button, .button {
         @apply transition-colors duration-150 focus:ring disabled:opacity-75 disabled:bg-gray-600 disabled:text-gray-200;
         cursor: pointer
     }
