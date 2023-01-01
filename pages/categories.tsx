@@ -31,7 +31,7 @@ export default function Categories({
             <ImageWithText
               key={url}
               className="h-96 max-h-96"
-              moreHeightConstraints="24rem"
+              heightConstraint="24rem"
               breakpoints={TAGS_IMAGE_BREAKPOINTS}
               filename={image}
               text={name}

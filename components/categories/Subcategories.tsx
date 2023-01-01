@@ -31,5 +31,5 @@ function SubcategoryCard({
   image,
   imageInfo,
 }: SubcategoryDetail & { imageInfo: ImageInfo }) {
-  return <ImageWithText className="h-96 max-h-96" moreHeightConstraints="24rem" breakpoints={SUBCATEGORY_IMAGE_BREAKPOINTS} text={name} url={url} filename={image} {...imageInfo} />;
+  return <ImageWithText className="h-96 max-h-96" heightConstraint="24rem" breakpoints={SUBCATEGORY_IMAGE_BREAKPOINTS} text={name} url={url} filename={image} {...imageInfo} />;
 }

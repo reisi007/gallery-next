@@ -11,7 +11,7 @@ export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticP
     <GalleryPage title="Tag Übersicht">
       <div className="my-2 grid md:grid-cols-2 xl:grid-cols-3">
         {tags.map(([url, name, image, imageInfo]) => (
-          <ImageWithText key={url} moreHeightConstraints="24rem" filename={image} text={name} className="h-96 max-h-96" url={`/tags/${url}`} {...imageInfo} />))}
+          <ImageWithText key={url} heightConstraint="24rem" filename={image} text={name} className="h-96 max-h-96" url={`/tags/${url}`} {...imageInfo} />))}
       </div>
     </GalleryPage>
   );
