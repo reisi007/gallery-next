@@ -5,7 +5,7 @@ import { init } from '@socialgouv/matomo-next';
 import { useEffect } from 'react';
 
 const MATOMO_URL = 'https://analytics.reisinger.pictures/';
-const MATOMO_SITE_ID = '5';
+const MATOMO_SITE_ID = '9';
 export default function App({
   Component,
   pageProps,
