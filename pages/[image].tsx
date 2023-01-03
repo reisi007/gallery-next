@@ -3,10 +3,11 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { ImageDetail, loadImageDetails, NameWithUrl } from '../components/static/loadJson';
-import { ExifInfo, ImageInfo } from '../components/images-next/types/ImageTypes';
+import { ExifInfo, ExifTagsType, ImageInfo } from '../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../components/GalleryPage';
 import { Image } from '../components/images-next/utils/Image';
 import { readExifJsonInternal, readImageInternal } from '../components/images-next/static/readImageInternal';
+import { formatDateTime } from '../components/images-next/utils/Age';
 
 export default function ImagePage({
   imageDetails,
@@ -21,19 +22,53 @@ export default function ImagePage({
   return (
     <GalleryPage title={imageInfo.metadata.title}>
       <Image className="my-4" filename={filename} {...imageInfo} />
+      <h3>EXIF Daten</h3>
       <div className="mx-auto my-4 grid w-full grid-cols-1 sm:w-3/4 sm:grid-cols-2 md:w-1/2">
         {Object.entries(exif)
-          .map(([k, v]) => (
-            <Fragment key={k}>
-              <div>{k}</div>
-              <div>{v}</div>
-            </Fragment>
-          ))}
+          .map(([k, v]) => {
+            if (v === undefined) {
+              return false;
+            }
+            return (
+              <Fragment key={k}>
+                <div>{exifKey2String(k)}</div>
+                <div>{exifValue2String(k, v)}</div>
+              </Fragment>
+            );
+          })}
       </div>
       <MoreLinks prefix="categories" title="Kategorien" links={categories} />
       <MoreLinks prefix="tags" title="Tags" links={tags} />
     </GalleryPage>
   );
+}
+
+function exifValue2String(key: ExifTagsType, value: string): string {
+  switch (key) {
+    case 'CREATION_DATETIME':
+      return formatDateTime(value);
+    default:
+      return value;
+  }
+}
+
+function exifKey2String(key: ExifTagsType): string {
+  switch (key) {
+    case 'CAMERA_MAKE':
+      return 'Kamera Hersteller';
+    case 'CAMERA_MODEL':
+      return 'Kamera Modell';
+    case 'LENS_MODEL':
+      return 'Objektiv';
+    case 'FOCAL_LENGTH':
+      return 'Brennweite';
+    case 'APERTURE':
+      return 'Brennweite';
+    case 'SHUTTER_SPEED':
+      return 'Verschlusszeit';
+    default:
+      return key;
+  }
 }
 
 function MoreLinks({

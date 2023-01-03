@@ -3,9 +3,9 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { loadCategoryDetails, SubcategoryDetail } from '../../components/static/loadJson';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../../components/GalleryPage';
-import { Gallery } from '../../components/images-next/gallery/Gallery';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
 import { Subcategories } from '../../components/categories/Subcategories';
+import { GalleryWithInfo } from '../../components/GalleryWithInfo';
 
 export default function CategoryPage({
   category: name,
@@ -17,8 +17,8 @@ export default function CategoryPage({
     <GalleryPage title={name}>
       <h2 className="my-2">Unterkategorien</h2>
       <Subcategories className="mb-8" subcategories={subcategories} subcategoryImages={subcategoryImages} />
-      <h2 className="my-2">Bilder</h2>
-      <Gallery images={images} />
+      <h2 id="bilder" className="my-2">Bilder</h2>
+      <GalleryWithInfo images={images} />
     </GalleryPage>
   );
 }

@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { Gallery } from '../../components/images-next/gallery/Gallery';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../../components/GalleryPage';
 import { loadTagDetails } from '../../components/static/loadJson';
+import { GalleryWithInfo } from '../../components/GalleryWithInfo';
 
 export default function TagPage({
   tag: name,
@@ -12,7 +12,7 @@ export default function TagPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <GalleryPage title={name}>
-      <Gallery images={images} />
+      <GalleryWithInfo images={images} />
     </GalleryPage>
   );
 }
