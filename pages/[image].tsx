@@ -119,7 +119,7 @@ interface PathParams extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths<PathParams> = async () => {
   const data = await loadImageDetails();
   const paths: Array<{ params: PathParams }> = Object.keys(data)
-    .map((image) => ({ params: { image: image.toLowerCase() } }));
+    .map((image) => ({ params: { image } }));
   return {
     paths,
     fallback: false,
