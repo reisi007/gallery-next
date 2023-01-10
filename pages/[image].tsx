@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import Link from 'next/link';
 import { ImageDetail, loadImageDetails, NameWithUrl } from '../components/static/loadJson';
 import { ExifInfo, ExifTagsType, ImageInfo } from '../components/images-next/types/ImageTypes';
@@ -20,7 +20,7 @@ export default function ImagePage({
     categories,
   } = imageDetails;
   return (
-    <GalleryPage title={imageInfo.metadata.title}>
+    <GalleryPage title={imageInfo.metadata.title} keywords={useMemo(() => tags.map((e) => e.name), [tags])}>
       <Image className="my-4" filename={filename} {...imageInfo} />
       <h3>EXIF Daten</h3>
       <div className="mx-auto my-4 grid w-full grid-cols-1 sm:w-3/4 sm:grid-cols-2 md:w-1/2">
