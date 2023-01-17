@@ -1,8 +1,11 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 
-import { init } from '@socialgouv/matomo-next';
+import { init, push } from '@socialgouv/matomo-next';
+
 import { useEffect } from 'react';
+import { CookieConsentContext } from '../components/images-next/cookies/Cookies';
+import { ConsentBanner } from '../components/images-next/cookies/ConsentBanner';
 
 const MATOMO_URL = 'https://analytics.reisinger.pictures/';
 const MATOMO_SITE_ID = '9';
@@ -15,6 +18,12 @@ export default function App({
       url: MATOMO_URL,
       siteId: MATOMO_SITE_ID,
     });
+    push(['requireCookieConsent']);
   }, []);
-  return <Component {...pageProps} />;
+  return (
+    <CookieConsentContext>
+      <ConsentBanner />
+      <Component {...pageProps} />
+    </CookieConsentContext>
+  );
 }
