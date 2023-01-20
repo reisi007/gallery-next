@@ -6,7 +6,9 @@
     "airbnb",
     "airbnb-typescript"
   ],
-  "plugins": ["unused-imports"],
+  "plugins": [
+    "unused-imports"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -25,6 +27,7 @@
     "@typescript-eslint/spac": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "linebreak-style": "off",
+    "import/no-webpack-loader-syntax": "off",
     "@typescript-eslint/object-curly-spacing": "warn",
     "no-trailing-spaces": "warn",
     "no-multi-spaces": "warn",
@@ -54,7 +57,12 @@
     "react/jsx-first-prop-new-line": "warn",
     "react/jsx-curly-spacing": "warn",
     "react/jsx-key": "error",
-    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/exhaustive-deps": [
+      "error",
+      {
+        "additionalHooks": "(useCancelableEffect)"
+      }
+    ],
     "comma-style": "warn",
     "react/jsx-max-props-per-line": "warn",
     "array-bracket-spacing": "warn",
