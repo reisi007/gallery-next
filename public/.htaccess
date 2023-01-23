@@ -3,6 +3,6 @@ RewriteEngine On
 
 RewriteRule ^$ index.html [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^.]+?((?!\.html))|(/?))$ $1.html [QSA,L]
+RewriteRule ^(.+?)(?<!\.html)\/?$ $1.html [QSA,L]
 
 ErrorDocument 404 /404.html

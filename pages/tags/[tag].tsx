@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { useMemo } from 'react';
 import { readMultipleImagesInternal } from '../../components/images-next/static/readImageInternal';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../../components/GalleryPage';
@@ -11,7 +12,11 @@ export default function TagPage({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <GalleryPage title={name}>
+    <GalleryPage
+      title={name}
+      keywords={useMemo(() => [name], [name])}
+      description={`Hier findest du ${images.length} Bilder zum Thema ${name}!`}
+    >
       <GalleryWithInfo images={images} />
     </GalleryPage>
   );

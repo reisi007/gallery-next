@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useMemo } from 'react';
 import { loadRootCategories, SubcategoryDetail } from '../components/static/loadJson';
 import { GalleryPage } from '../components/GalleryPage';
 import { Breakpoint, ImageBreakpoints, ImageWithText } from '../components/images-next/utils/Image';
@@ -19,7 +20,10 @@ export default function Categories({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <GalleryPage title="Alle Kategorien">
+    <GalleryPage
+      title="Alle Kategorien"
+      keywords={useMemo(() => subcategories.map((e) => e.name), [subcategories])}
+    >
       <div className="my-2 grid md:grid-cols-2 xl:grid-cols-3">
         {subcategories.map(({
           image,

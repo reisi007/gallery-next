@@ -1,5 +1,6 @@
 import {existsSync, promises as fs} from 'fs';
 import path from "path";
+import sharp from "sharp";
 
 const IMAGE_SIZES = [20, 400, 700, 1200, 2050];
 

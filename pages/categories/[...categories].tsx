@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useMemo } from 'react';
 import { loadCategoryDetails, SubcategoryDetail } from '../../components/static/loadJson';
 import { ImageInfo } from '../../components/images-next/types/ImageTypes';
 import { GalleryPage } from '../../components/GalleryPage';
@@ -14,7 +15,11 @@ export default function CategoryPage({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <GalleryPage title={name}>
+    <GalleryPage
+      title={name}
+      keywords={useMemo(() => [name, ...subcategories.map((e) => e.name)], [name, subcategories])}
+      description={`Hier findest du ${images.length} Bilder zum Thema ${name}!`}
+    >
       <h2 className="my-2">Unterkategorien</h2>
       <Subcategories className="mb-8" subcategories={subcategories} subcategoryImages={subcategoryImages} />
       <h2 id="bilder" className="my-2">Bilder</h2>
