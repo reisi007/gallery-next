@@ -13,6 +13,10 @@ const PATHS: { [key: string]: PathEntry } = {
     title: 'Alle Tags',
     important: true,
   },
+  'https://reisinger.pictures': {
+    title: 'Fotoshooting mit mir',
+    important: true,
+  },
 };
 
 export function GalleryPage({
